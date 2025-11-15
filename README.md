@@ -8,24 +8,24 @@ This repository contains everything you need to master TypeScript OOP concepts:
 
 ### Study Notes (7 Topics)
 
-1. **Real-World Use Cases** - Understanding when and why to use classes
-2. **Classes Basics** - Fundamentals, constructors, properties, and methods
-3. **Access Modifiers & Encapsulation** - public, private, protected, readonly, and static
-4. **Getters and Setters** - Property accessors, validation, and computed properties
-5. **Inheritance** - Extending classes, method overriding, and the super keyword
-6. **Abstract Classes** - Abstraction, abstract methods, and templates
-7. **Interfaces & Polymorphism** - Contracts, multiple implementations, and polymorphism
+1. [**Real-World Use Cases**](00-real-world-use-cases.md) - Understanding when and why to use classes
+2. [**Classes Basics**](01-classes-basics.md) - Fundamentals, constructors, properties, and methods
+3. [**Access Modifiers & Encapsulation**](02-access-modifiers-encapsulation.md) - public, private, protected, readonly, and static
+4. [**Getters and Setters**](03-getters-setters.md) - Property accessors, validation, and computed properties
+5. [**Inheritance**](04-inheritance.md) - Extending classes, method overriding, and the super keyword
+6. [**Abstract Classes**](05-abstract-classes.md) - Abstraction, abstract methods, and templates
+7. [**Interfaces & Polymorphism**](06-interfaces-polymorphism.md) - Contracts, multiple implementations, and polymorphism
 
 ### Exercises (6 Challenges)
 
 Progressive exercises that build on each concept:
 
-- Exercise 1: Basic Classes
-- Exercise 2: Access Modifiers
-- Exercise 3: Getters and Setters
-- Exercise 4: Inheritance
-- Exercise 5: Abstract Classes
-- Exercise 6: Interfaces and Polymorphism
+- [Exercise 1: Basic Classes](exercises.md#exercise-1-basic-classes)
+- [Exercise 2: Access Modifiers](exercises.md#exercise-2-access-modifiers)
+- [Exercise 3: Getters and Setters](exercises.md#exercise-3-getters-and-setters)
+- [Exercise 4: Inheritance](exercises.md#exercise-4-inheritance)
+- [Exercise 5: Abstract Classes](exercises.md#exercise-5-abstract-classes)
+- [Exercise 6: Interfaces and Polymorphism](exercises.md#exercise-6-interfaces-and-polymorphism)
 
 ## 🚀 Getting Started
 
