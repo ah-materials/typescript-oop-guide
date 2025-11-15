@@ -1,6 +1,6 @@
 # TypeScript OOP Exercises
 
-Complete each exercise in order and share your solution for review before moving to the next one.
+Complete each exercise in order to progressively build your TypeScript OOP skills. Each exercise builds on concepts from previous ones.
 
 ---
 
@@ -191,11 +191,12 @@ completeAllTasks(tasks); // Completes all tasks regardless of type
 
 ---
 
-## Submission Instructions
+## How to Complete Exercises
 
-1. Create a TypeScript file for each exercise (e.g., `exercise1.ts`, `exercise2.ts`, etc.)
-2. Complete one exercise at a time
-3. Share your solution code
-4. Wait for review and feedback before proceeding to the next exercise
+1. **Create exercise files** in the `src/` folder (e.g., `src/exercise1.ts`, `src/exercise2.ts`)
+2. **Run your solutions** with `npx ts-node src/exercise1.ts`
+3. **Test thoroughly** - make sure your code works as expected
+4. **Commit your work** to your forked repository to track your progress
+5. **Move at your own pace** - these are for your learning, not submission
 
 Good luck! Start with Exercise 1 when you're ready.
