@@ -33,10 +33,11 @@ class Student {
     if (!this.enrolledCourses.includes(courseName)) {
       throw new Error("You can't drop a course you are not enrolled in");
     }
-    // we want to filter through the enrolledCourses and remove the courseName that matches the argument
+
     this.enrolledCourses = this.enrolledCourses.filter(
       (course) => course !== courseName,
     );
+
     return this.enrolledCourses;
   }
 
