@@ -1,252 +1,229 @@
-# Lesson 04 Exercises: Static Members
+# Lesson 06 Exercises: Getters and Setters
 
-Complete these exercises to practice using static properties and methods, understanding class-level vs instance-level members.
-
----
-
-## Exercise 1: Static Properties (Easy)
-
-**File:** `01-static-properties-easy.ts`
-
-Create a `Car` class that tracks total cars created:
-
-**Requirements:**
-- Static property: `totalCars` (number, starts at 0)
-- Instance properties: `brand` (string), `model` (string), `carId` (number)
-- Constructor increments `totalCars` and assigns unique `carId` based on `totalCars`
-- Static method `getTotalCars()`: returns total cars created
-- Instance method `getInfo()`: returns formatted car information
-
-**Example usage:**
-```typescript
-const car1 = new Car("Toyota", "Camry");
-const car2 = new Car("Honda", "Civic");
-const car3 = new Car("Ford", "Mustang");
-
-console.log(Car.getTotalCars()); // 3
-
-console.log(car1.getInfo()); // "Car #1: Toyota Camry"
-console.log(car2.getInfo()); // "Car #2: Honda Civic"
-console.log(car3.getInfo()); // "Car #3: Ford Mustang"
-
-// Static property accessed via class name
-console.log(Car.totalCars); // 3
-```
-
-**Learning goals:** Static properties, tracking shared state, static vs instance access
+Complete these exercises to practice using getters and setters for computed properties, validation, and controlled access to object state.
 
 ---
 
-## Exercise 2: Static Constants (Easy)
+## Exercise 1: Basic Getters and Setters (Easy)
 
-**File:** `02-static-constants-easy.ts`
+**File:** `01-basic-getters-setters-easy.ts`
 
-Create a `Temperature` class with static conversion methods and constants:
+Create a `Person` class with getters and setters for validation:
 
 **Requirements:**
-- Static readonly constants:
-  - `FREEZING_POINT_C = 0`
-  - `BOILING_POINT_C = 100`
-  - `ABSOLUTE_ZERO_C = -273.15`
-- Static methods:
-  - `celsiusToFahrenheit(celsius: number)`: converts C to F
-  - `fahrenheitToCelsius(fahrenheit: number)`: converts F to C
-  - `celsiusToKelvin(celsius: number)`: converts C to K
-  - `kelvinToCelsius(kelvin: number)`: converts K to C
-- Instance property: `celsius` (number)
-- Instance methods:
-  - `toFahrenheit()`: converts this instance's temperature to F
-  - `toKelvin()`: converts this instance's temperature to K
+- Private properties: `_firstName` (string), `_lastName` (string), `_age` (number)
+- Getter/Setter for `firstName`: validate not empty
+- Getter/Setter for `lastName`: validate not empty
+- Getter/Setter for `age`: validate between 0 and 150
+- Getter only for `fullName`: returns "firstName lastName"
+- Method `introduce()`: uses getters to return introduction
 
 **Example usage:**
 ```typescript
-// Using static methods (utility functions)
-console.log(Temperature.celsiusToFahrenheit(0));   // 32
-console.log(Temperature.celsiusToFahrenheit(100)); // 212
-console.log(Temperature.fahrenheitToCelsius(32));  // 0
+const person = new Person("John", "Doe", 30);
 
-// Using static constants
-console.log(Temperature.FREEZING_POINT_C); // 0
-console.log(Temperature.BOILING_POINT_C);  // 100
+console.log(person.fullName); // "John Doe"
+console.log(person.age);       // 30
 
-// Using instances
-const temp = new Temperature(25);
-console.log(temp.toFahrenheit()); // 77
-console.log(temp.toKelvin());     // 298.15
+person.firstName = "Jane";
+console.log(person.fullName);  // "Jane Doe"
+
+// person.age = -5;    // ❌ Error - age validation
+// person.age = 200;   // ❌ Error - age validation
+
+console.log(person.introduce()); // "Hi, I'm Jane Doe and I'm 30 years old"
 ```
 
-**Learning goals:** Static constants, static utility methods, mixing static and instance members
+**Learning goals:** Basic getter/setter syntax, validation in setters, computed read-only properties
 
 ---
 
-## Exercise 3: Resource Management (Medium)
+## Exercise 2: Computed Properties (Easy)
 
-**File:** `03-resource-management-medium.ts`
+**File:** `02-computed-properties-easy.ts`
 
-Create a `DatabaseConnection` class that limits total active connections:
+Create a `Rectangle` class with computed area and perimeter:
 
 **Requirements:**
-- Static properties:
-  - `maxConnections` (number, set to 5)
-  - `activeConnections` (number, starts at 0)
-  - `connectionHistory` (array of connection IDs)
-- Instance properties:
-  - `connectionId` (string)
-  - `isActive` (boolean)
-  - `connectedAt` (Date)
-- Constructor:
-  - Throws error if activeConnections >= maxConnections
-  - Increments activeConnections
-  - Adds connectionId to connectionHistory
-  - Sets isActive to true
-- Instance methods:
-  - `disconnect()`: decrements activeConnections, sets isActive to false
-  - `reconnect()`: attempts to reconnect (check max connections)
-- Static methods:
-  - `getStatus()`: returns string with active/max connections
-  - `canConnect()`: returns boolean if new connection is possible
-  - `getHistory()`: returns connection history
+- Private properties: `_width` (number), `_height` (number)
+- Getter/Setter for `width`: validate positive number
+- Getter/Setter for `height`: validate positive number
+- Getter only for `area`: computed as width * height
+- Getter only for `perimeter`: computed as 2 * (width + height)
+- Getter only for `isSquare`: returns true if width === height
+- Setter for `square`: when set to true, makes it a square (height = width)
 
 **Example usage:**
 ```typescript
-console.log(DatabaseConnection.canConnect()); // true
+const rect = new Rectangle(5, 10);
 
-const conn1 = new DatabaseConnection("conn-1");
-const conn2 = new DatabaseConnection("conn-2");
-const conn3 = new DatabaseConnection("conn-3");
+console.log(rect.area);      // 50
+console.log(rect.perimeter); // 30
+console.log(rect.isSquare);  // false
 
-console.log(DatabaseConnection.getStatus()); // "3/5 connections active"
+rect.width = 8;
+console.log(rect.area);      // 80
 
-conn1.disconnect();
-console.log(DatabaseConnection.getStatus()); // "2/5 connections active"
-
-// Create connections up to the limit
-const conn4 = new DatabaseConnection("conn-4");
-const conn5 = new DatabaseConnection("conn-5");
-const conn6 = new DatabaseConnection("conn-6");
-
-console.log(DatabaseConnection.canConnect()); // false
-
-// This should throw error - max connections reached
-// const conn7 = new DatabaseConnection("conn-7"); // Error!
-
-conn2.disconnect();
-console.log(DatabaseConnection.canConnect()); // true
+rect.square = true;
+console.log(rect.width);     // 8
+console.log(rect.height);    // 8
+console.log(rect.isSquare);  // true
 ```
 
-**Learning goals:** Resource management, static state tracking, validation with static properties
+**Learning goals:** Computed properties, read-only getters, setters that affect multiple properties
 
 ---
 
-## Exercise 4: Utility Class (Medium)
+## Exercise 3: Data Transformation (Medium)
 
-**File:** `04-utility-class-medium.ts`
+**File:** `03-data-transformation-medium.ts`
 
-Create a `MathUtils` class with only static methods (no instances needed):
+Create a `Temperature` class that handles conversion transparently:
 
 **Requirements:**
-- All methods should be static (this is a utility class, no instances created)
-- Static methods:
-  - `max(...numbers: number[])`: returns largest number
-  - `min(...numbers: number[])`: returns smallest number
-  - `average(...numbers: number[])`: returns average
-  - `sum(...numbers: number[])`: returns sum
-  - `factorial(n: number)`: returns factorial of n
-  - `isPrime(n: number)`: returns true if n is prime
-  - `fibonacci(n: number)`: returns nth Fibonacci number
-  - `randomInt(min: number, max: number)`: returns random integer in range
+- Private property: `_celsius` (number, stores in Celsius)
+- Getter/Setter for `celsius`: direct access
+- Getter/Setter for `fahrenheit`: converts to/from Celsius
+- Getter/Setter for `kelvin`: converts to/from Celsius
+- Getter only for `isFreezing`: returns true if <= 0°C
+- Getter only for `isBoiling`: returns true if >= 100°C
+- Method `compare(other: Temperature)`: returns which is hotter
 
 **Example usage:**
 ```typescript
-// No instances needed - just use the class
-console.log(MathUtils.max(1, 5, 3, 9, 2)); // 9
-console.log(MathUtils.min(1, 5, 3, 9, 2)); // 1
-console.log(MathUtils.average(10, 20, 30)); // 20
-console.log(MathUtils.sum(1, 2, 3, 4, 5)); // 15
+const temp = new Temperature();
 
-console.log(MathUtils.factorial(5)); // 120
-console.log(MathUtils.isPrime(17)); // true
-console.log(MathUtils.isPrime(18)); // false
+temp.celsius = 25;
+console.log(temp.celsius);    // 25
+console.log(temp.fahrenheit); // 77
+console.log(temp.kelvin);     // 298.15
 
-console.log(MathUtils.fibonacci(7)); // 13 (0,1,1,2,3,5,8,13)
-console.log(MathUtils.randomInt(1, 10)); // Random number between 1-10
+temp.fahrenheit = 212;
+console.log(temp.celsius);    // 100
+console.log(temp.isBoiling);  // true
 
-// No need to create instances
-// const math = new MathUtils(); // Not necessary!
+temp.kelvin = 273.15;
+console.log(temp.celsius);    // 0
+console.log(temp.isFreezing); // true
 ```
 
-**Learning goals:** Utility classes, static-only classes, practical use of static methods
+**Learning goals:** Data transformation in getters/setters, multiple representations of the same data
 
 ---
 
-## Exercise 5: Factory Pattern with Static Methods (Hard)
+## Exercise 4: Validation and Side Effects (Medium)
 
-**File:** `05-factory-pattern-hard.ts`
+**File:** `04-validation-side-effects-medium.ts`
 
-Create a `User` class and `UserFactory` with advanced factory patterns:
+Create a `UserAccount` class with password hashing and email validation:
 
 **Requirements:**
-
-**User class:**
-- Properties: `id` (string), `username` (string), `email` (string), `role` (string), `createdAt` (Date), `permissions` (string[])
-- Constructor accepts all properties
-- Method `hasPermission(permission: string)`: checks if user has permission
-- Method `getInfo()`: returns formatted user info
-
-**UserFactory class (static methods only):**
-- Static property: `userCount` (tracks total users created)
-- Static method `createAdmin(username: string, email: string)`: creates admin user with all permissions
-- Static method `createModerator(username: string, email: string)`: creates moderator with limited permissions
-- Static method `createRegularUser(username: string, email: string)`: creates regular user with basic permissions
-- Static method `createCustomUser(username: string, email: string, role: string, permissions: string[])`: creates user with custom settings
-- Static method `createFromAPIData(data: any)`: creates user from API response object
-- Static method `createBatch(count: number, role: string)`: creates multiple users at once
-- Static method `getTotalUsers()`: returns total users created
+- Private properties: `_username` (string), `_email` (string), `_passwordHash` (string), `_lastModified` (Date)
+- Getter/Setter for `username`: validate min 3 chars, max 20 chars, alphanumeric only
+- Getter/Setter for `email`: validate contains "@" and "."
+- Setter only for `password`: hashes password (use simple hash for exercise), updates lastModified
+- Method `verifyPassword(password: string)`: checks if password matches hash
+- Getter only for `accountInfo`: returns formatted account information
+- Getter only for `passwordAge`: returns days since password was last changed
 
 **Example usage:**
 ```typescript
-const admin = UserFactory.createAdmin("admin1", "admin@example.com");
-console.log(admin.getInfo()); // "User #1: admin1 (admin@example.com) - Role: admin"
-console.log(admin.hasPermission("delete_users")); // true
+const user = new UserAccount("john_doe", "john@example.com");
 
-const mod = UserFactory.createModerator("mod1", "mod@example.com");
-console.log(mod.hasPermission("delete_users")); // false
-console.log(mod.hasPermission("edit_posts")); // true
+user.password = "mysecretpass";
+console.log(user.verifyPassword("mysecretpass")); // true
+console.log(user.verifyPassword("wrongpass"));    // false
 
-const user = UserFactory.createRegularUser("john", "john@example.com");
-console.log(user.hasPermission("create_posts")); // true
-console.log(user.hasPermission("edit_posts")); // false
+user.email = "newemail@example.com";
+// user.email = "invalid"; // ❌ Error - invalid email format
 
-// Create from API data
-const apiData = {
-  username: "jane",
-  email: "jane@example.com",
-  role: "user",
-  permissions: ["read", "comment"]
-};
-const apiUser = UserFactory.createFromAPIData(apiData);
+console.log(user.accountInfo);
+// "Username: john_doe, Email: newemail@example.com"
 
-// Batch creation
-const moderators = UserFactory.createBatch(5, "moderator");
-console.log(UserFactory.getTotalUsers()); // 8 (admin + mod + user + apiUser + 5 mods)
+console.log(user.passwordAge); // 0 (just set)
 ```
 
-**Learning goals:** Factory pattern, static factory methods, complex object creation, batch operations
+**Learning goals:** Complex validation, side effects in setters (updating lastModified), write-only setters
+
+---
+
+## Exercise 5: Shopping Cart with Smart Getters (Hard)
+
+**File:** `05-shopping-cart-smart-getters-hard.ts`
+
+Create a comprehensive shopping cart with intelligent getters and setters:
+
+**Requirements:**
+
+**CartItem class:**
+- Private properties: `_name` (string), `_price` (number), `_quantity` (number)
+- Getter/Setter for `name`, `price` (validate > 0), `quantity` (validate >= 0)
+- Getter only for `subtotal`: price * quantity
+
+**ShoppingCart class:**
+- Private property: `_items` (array of CartItem)
+- Private property: `_discountCode` (string | null)
+- Private property: `_taxRate` (number, default 0.08 for 8%)
+- Method `addItem(name: string, price: number, quantity: number)`: adds or updates item
+- Method `removeItem(name: string)`: removes item
+- Method `updateQuantity(name: string, quantity: number)`: updates item quantity
+- Getter only for `items`: returns copy of items array
+- Getter only for `subtotal`: sum of all item subtotals
+- Getter/Setter for `discountCode`: validates discount codes
+- Getter only for `discount`: calculates discount based on code ("SAVE10" = 10%, "SAVE20" = 20%)
+- Getter only for `subtotalAfterDiscount`: subtotal minus discount
+- Getter only for `tax`: calculated on subtotal after discount
+- Getter only for `total`: final total with tax
+- Getter only for `isEmpty`: returns true if no items
+- Getter only for `itemCount`: total number of items
+- Method `clear()`: empties cart
+
+**Example usage:**
+```typescript
+const cart = new ShoppingCart();
+
+cart.addItem("Laptop", 1000, 1);
+cart.addItem("Mouse", 25, 2);
+
+console.log(cart.subtotal);     // 1050
+console.log(cart.itemCount);    // 2
+
+cart.discountCode = "SAVE10";
+console.log(cart.discount);     // 105 (10% of 1050)
+console.log(cart.subtotalAfterDiscount); // 945
+console.log(cart.tax);          // 75.6 (8% of 945)
+console.log(cart.total);        // 1020.6
+
+cart.updateQuantity("Mouse", 1);
+console.log(cart.subtotal);     // 1025
+console.log(cart.total);        // 982.5
+
+// Get items (returns copy, can't modify original)
+const items = cart.items;
+console.log(items.length);      // 2
+
+console.log(cart.isEmpty);      // false
+cart.clear();
+console.log(cart.isEmpty);      // true
+```
+
+**Learning goals:** Complex computed properties, chained calculations, smart getters that depend on other getters, real-world application
 
 ---
 
 ## How to Complete
 
 1. Work through exercises in order (they build in difficulty)
-2. Run each exercise with: `npx ts-node exercises/lesson-04/01-static-properties-easy.ts`
-3. Pay attention to when to use static vs instance members
-4. Remember: static members are accessed via the class name, instance members via objects
-5. For utility classes (Exercise 4), no instances should be created
+2. Run each exercise with: `npx ts-node exercises/lesson-04/01-basic-getters-setters-easy.ts`
+3. Remember: getters have no parameters, setters have exactly one parameter
+4. Always validate in setters before modifying internal state
+5. Use getters for computed properties that don't need to be stored
 
 ## Tips
 
-- Read the lesson content in `docs/04-static-members.md` if you get stuck
-- Static members belong to the class, not instances
-- Use static for: shared state, constants, utility functions, factory methods
-- Use instance members for: data unique to each object
-- Static methods cannot access instance properties (no `this` for instances)
+- Read the lesson content in `docs/04-getters-setters.md` if you get stuck
+- Getters are called without parentheses: `obj.property` not `obj.property()`
+- Setters are assigned to like regular properties: `obj.property = value`
+- Use private `_property` and public `property` getter/setter pattern
+- Computed properties (getters without setters) are useful for derived data
+- Setters can have side effects (like updating lastModified timestamp)

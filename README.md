@@ -6,38 +6,34 @@ A comprehensive guide to learning Object-Oriented Programming (OOP) in TypeScrip
 
 This repository contains everything you need to master TypeScript OOP concepts:
 
-### Study Notes (10 Topics + Reference)
+### Study Notes (8 Topics + Reference)
 
 All documentation is organized in the [`docs/`](docs/) folder:
 
 0. [**Real-World Use Cases**](docs/00-real-world-use-cases.md) - Understanding when and why to use classes
-1. [**Classes and Objects**](docs/01-classes-and-objects.md) - The foundation: what classes are and how to create objects
-2. [**Properties and Constructors**](docs/02-properties-and-constructors.md) - Data storage and object initialization
-3. [**Methods and `this`**](docs/03-methods-and-this.md) - Defining behavior and understanding context
-4. [**Static Members**](docs/04-static-members.md) - Class-level properties and methods
-5. [**Access Modifiers & Encapsulation**](docs/05-access-modifiers-encapsulation.md) - public, private, protected, and readonly
-6. [**Getters and Setters**](docs/06-getters-setters.md) - Property accessors, validation, and computed properties
-7. [**Inheritance**](docs/07-inheritance.md) - Extending classes, `super` keyword, and method overriding
-8. [**Abstract Classes**](docs/08-abstract-classes.md) - Abstraction, abstract methods, and templates
-9. [**Interfaces & Polymorphism**](docs/09-interfaces-polymorphism.md) - Contracts, multiple implementations, and polymorphism
+1. [**Classes and Objects**](docs/01-classes-and-objects.md) - Comprehensive guide covering classes, objects, properties, constructors, methods, and the `this` keyword
+2. [**Static Members**](docs/02-static-members.md) - Class-level properties and methods
+3. [**Access Modifiers & Encapsulation**](docs/03-access-modifiers-encapsulation.md) - public, private, protected, and readonly
+4. [**Getters and Setters**](docs/04-getters-setters.md) - Property accessors, validation, and computed properties
+5. [**Inheritance**](docs/05-inheritance.md) - Extending classes, `super` keyword, and method overriding
+6. [**Abstract Classes**](docs/06-abstract-classes.md) - Abstraction, abstract methods, and templates
+7. [**Interfaces & Polymorphism**](docs/07-interfaces-polymorphism.md) - Contracts, multiple implementations, and polymorphism
 
 **Quick Reference:**
 
 - [**Keywords Reference**](docs/keywords-reference.md) - Complete reference for all OOP keywords (class, new, this, static, extends, super, etc.)
 
-### Exercises (45 Challenges)
+### Exercises (37 Challenges)
 
-Progressive exercises organized by lesson (4-5 exercises per lesson):
+Progressive exercises organized by lesson:
 
-- [Lesson 01: Classes and Objects](exercises/lesson-01/) - 5 exercises (Easy → Hard)
-- [Lesson 02: Properties and Constructors](exercises/lesson-02/) - 5 exercises (Easy → Hard)
-- [Lesson 03: Methods and This](exercises/lesson-03/) - 5 exercises (Easy → Hard)
-- [Lesson 04: Static Members](exercises/lesson-04/) - 5 exercises (Easy → Hard)
-- [Lesson 05: Access Modifiers and Encapsulation](exercises/lesson-05/) - 5 exercises (Easy → Hard)
-- [Lesson 06: Getters and Setters](exercises/lesson-06/) - 5 exercises (Easy → Hard)
-- [Lesson 07: Inheritance](exercises/lesson-07/) - 5 exercises (Easy → Hard)
-- [Lesson 08: Abstract Classes](exercises/lesson-08/) - 5 exercises (Easy → Hard)
-- [Lesson 09: Interfaces and Polymorphism](exercises/lesson-09/) - 5 exercises (Easy → Hard)
+- [Lesson 01: Classes, Objects, Properties, Constructors, Methods, and `this`](exercises/lesson-01/) - 7 exercises (Easy → Hard)
+- [Lesson 02: Static Members](exercises/lesson-02/) - 5 exercises (Easy → Hard)
+- [Lesson 03: Access Modifiers and Encapsulation](exercises/lesson-03/) - 5 exercises (Easy → Hard)
+- [Lesson 04: Getters and Setters](exercises/lesson-04/) - 5 exercises (Easy → Hard)
+- [Lesson 05: Inheritance](exercises/lesson-05/) - 5 exercises (Easy → Hard)
+- [Lesson 06: Abstract Classes](exercises/lesson-06/) - 5 exercises (Easy → Hard)
+- [Lesson 07: Interfaces and Polymorphism](exercises/lesson-07/) - 5 exercises (Easy → Hard)
 
 ## 🚀 Getting Started
 
@@ -66,15 +62,17 @@ npm install
 
 ### For Learners
 
-1. **Read the notes** in order (00-09):
+1. **Read the notes** in order:
    - Start with [`docs/00-real-world-use-cases.md`](docs/00-real-world-use-cases.md)
-   - Progress through each topic sequentially
+   - Then read [`docs/01-classes-and-objects.md`](docs/01-classes-and-objects.md) - this comprehensive guide covers classes, objects, properties, constructors, methods, and `this`
+   - Progress through the remaining topics (02-07)
    - Take your time to understand each concept
    - Use the [Keywords Reference](docs/keywords-reference.md) for quick lookups
 
 2. **Complete the exercises**:
    - Each lesson has its own folder in `exercises/` (e.g., `exercises/lesson-01/`)
-   - Each folder contains 4-5 exercises with progressive difficulty (Easy → Medium → Hard)
+   - Lesson 01 contains 7 exercises covering all foundational concepts; other lessons contain 5 exercises each
+   - Exercises have progressive difficulty (Easy → Medium → Hard)
    - Read the `README.md` in each lesson folder for exercise descriptions
    - Complete exercises in order within each lesson
    - Run your solutions with: `npx ts-node exercises/lesson-<number>/<file-name>.ts`
@@ -89,20 +87,22 @@ npm install
 
 **Finding exercises:**
 
-Each lesson has its own directory with 4-5 exercises:
+Each lesson has its own directory:
 
 ```
 exercises/
-├── lesson-01/          # Classes and Objects
+├── lesson-01/          # Classes, Objects, Properties, Constructors, Methods, and `this`
 │   ├── README.md       # Exercise descriptions and requirements
 │   ├── 01-simple-class-easy.ts
 │   ├── 02-class-with-methods-easy.ts
 │   ├── 03-multiple-objects-medium.ts
 │   ├── 04-object-interactions-medium.ts
-│   └── 05-library-system-hard.ts
-├── lesson-02/          # Properties and Constructors
-├── lesson-03/          # Methods and This
-└── ... (lesson-04 through lesson-09)
+│   ├── 05-library-system-hard.ts
+│   ├── 06-parameter-properties-medium.ts
+│   └── 07-this-context-problem-medium.ts
+├── lesson-02/          # Static Members
+├── lesson-03/          # Access Modifiers and Encapsulation
+└── ... (lesson-04 through lesson-07)
 ```
 
 **Completing exercises:**
@@ -118,7 +118,7 @@ exercises/
 ```bash
 # Run exercises from any lesson
 npx ts-node exercises/lesson-01/01-simple-class-easy.ts
-npx ts-node exercises/lesson-02/03-parameter-properties-medium.ts
+npx ts-node exercises/lesson-01/08-parameter-properties-medium.ts
 npx ts-node exercises/lesson-09/05-complete-application-hard.ts
 ```
 
@@ -135,21 +135,19 @@ The documentation is structured to build progressively:
 ```
 Basics (Understanding the Foundation)
 ├── 00: Why use classes?
-├── 01: What are classes and objects?
-├── 02: How to store data (properties & constructors)
-└── 03: How to define behavior (methods & this)
+└── 01: Comprehensive guide - classes, objects, properties, constructors, methods, and `this`
     ↓
 Class-Level Features
-├── 04: Static members (class-level vs instance-level)
-└── 05: Access control (public, private, protected, readonly)
+├── 02: Static members (class-level vs instance-level)
+└── 03: Access control (public, private, protected, readonly)
     ↓
 Advanced Property Access
-└── 06: Getters and setters (controlled access patterns)
+└── 04: Getters and setters (controlled access patterns)
     ↓
 Advanced Concepts (Code Reuse and Abstraction)
-├── 07: Inheritance (code reuse through extension)
-├── 08: Abstract classes (templates for subclasses)
-└── 09: Interfaces & polymorphism (contracts and flexibility)
+├── 05: Inheritance (code reuse through extension)
+├── 06: Abstract classes (templates for subclasses)
+└── 07: Interfaces & polymorphism (contracts and flexibility)
 ```
 
 ## 🤝 Contributing
