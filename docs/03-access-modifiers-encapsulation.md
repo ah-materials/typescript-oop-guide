@@ -477,6 +477,6 @@ class Temperature {
 
 ## What's Next?
 
-- Learn about getters and setters for elegant property access (File 06)
-- Understand how access modifiers work with inheritance (File 07)
-- Explore static members that belong to the class (File 04)
+- Learn about getters and setters for elegant property access (File 04)
+- Understand how access modifiers work with inheritance (File 05)
+- Explore static members that belong to the class (File 02)

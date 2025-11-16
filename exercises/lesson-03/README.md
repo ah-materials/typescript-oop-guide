@@ -1,241 +1,236 @@
-# Lesson 03 Exercises: Methods and `this`
+# Lesson 05 Exercises: Access Modifiers and Encapsulation
 
-Complete these exercises to practice writing methods, understanding the `this` keyword, and solving `this` context issues.
-
----
-
-## Exercise 1: Basic Methods (Easy)
-
-**File:** `01-basic-methods-easy.ts`
-
-Create a `Calculator` class with various methods:
-
-**Requirements:**
-- Property: `result` (number, starts at 0)
-- Method `add(value: number)`: adds value to result
-- Method `subtract(value: number)`: subtracts value from result
-- Method `multiply(value: number)`: multiplies result by value
-- Method `divide(value: number)`: divides result by value (check for division by zero)
-- Method `getResult()`: returns current result
-- Method `clear()`: resets result to 0
-
-**Example usage:**
-```typescript
-const calc = new Calculator();
-calc.add(10);
-calc.multiply(5);
-console.log(calc.getResult()); // 50
-
-calc.subtract(20);
-calc.divide(2);
-console.log(calc.getResult()); // 15
-
-calc.clear();
-console.log(calc.getResult()); // 0
-```
-
-**Learning goals:** Basic method syntax, working with `this`, void vs return types
+Complete these exercises to practice using access modifiers (public, private, protected, readonly) and understanding encapsulation principles.
 
 ---
 
-## Exercise 2: Methods Calling Methods (Easy)
+## Exercise 1: Public vs Private (Easy)
 
-**File:** `02-methods-calling-methods-easy.ts`
+**File:** `01-public-vs-private-easy.ts`
 
-Create a `TodoList` class where methods interact with each other:
+Create a `Wallet` class that demonstrates the importance of private properties:
 
 **Requirements:**
-- Property: `todos` (array of strings)
-- Property: `completedTodos` (array of strings)
-- Method `addTodo(task: string)`: adds task to todos
-- Method `completeTodo(task: string)`: moves task from todos to completedTodos
-- Method `removeTodo(task: string)`: removes task from todos array
-- Method `getTodoCount()`: returns number of incomplete todos
-- Method `getCompletedCount()`: returns number of completed todos
-- Method `getStatus()`: returns formatted string using getTodoCount() and getCompletedCount()
-- Method `clearCompleted()`: empties completedTodos array and calls getStatus()
+- Private property: `_balance` (number)
+- Public constructor accepting initial balance
+- Public method `deposit(amount: number)`: adds to balance with validation (amount > 0)
+- Public method `withdraw(amount: number)`: removes from balance with validation (amount > 0, sufficient funds)
+- Public method `getBalance()`: returns current balance
 
 **Example usage:**
 ```typescript
-const list = new TodoList();
-list.addTodo("Buy groceries");
-list.addTodo("Write code");
-list.addTodo("Exercise");
+const wallet = new Wallet(100);
 
-console.log(list.getStatus()); // "3 incomplete, 0 completed"
+wallet.deposit(50);
+console.log(wallet.getBalance()); // 150
 
-list.completeTodo("Buy groceries");
-list.completeTodo("Exercise");
+wallet.withdraw(30);
+console.log(wallet.getBalance()); // 120
 
-console.log(list.getStatus()); // "1 incomplete, 2 completed"
-
-list.clearCompleted();
-console.log(list.getStatus()); // "1 incomplete, 0 completed"
+// wallet._balance = 999999; // ❌ Error - private property
+// wallet.deposit(-50);      // ❌ Error - validation prevents this
 ```
 
-**Learning goals:** Methods calling other methods, using `this` to access methods, code reuse
+**Learning goals:** Private properties, encapsulation, controlled access through methods
 
 ---
 
-## Exercise 3: Understanding `this` (Medium)
+## Exercise 2: Readonly Properties (Easy)
 
-**File:** `03-understanding-this-medium.ts`
+**File:** `02-readonly-properties-easy.ts`
 
-Create a `Player` class that demonstrates how `this` works:
+Create a `Book` class with immutable properties:
 
 **Requirements:**
-- Properties: `name` (string), `score` (number), `level` (number)
-- Method `addPoints(points: number)`: adds points to score, calls checkLevelUp()
-- Method `checkLevelUp()`: private method that increases level if score >= level * 100
-- Method `getInfo()`: returns formatted string with player info
-- Method `compareWith(otherPlayer: Player)`: returns which player has higher score
-- Method `transferPoints(amount: number, toPlayer: Player)`: transfers points to another player
+- Readonly properties: `isbn` (string), `title` (string), `author` (string), `publishedYear` (number)
+- Property: `available` (boolean, can be modified)
+- Constructor accepts all properties
+- Method `checkOut()`: sets available to false if currently available
+- Method `returnBook()`: sets available to true
+- Method `getInfo()`: returns formatted book info
 
 **Example usage:**
 ```typescript
-const player1 = new Player("Alice", 0, 1);
-const player2 = new Player("Bob", 50, 1);
+const book = new Book("978-0-123", "1984", "George Orwell", 1949);
 
-player1.addPoints(150);
-console.log(player1.getInfo()); // "Alice - Level 2 - Score: 150"
+console.log(book.getInfo());
+// "1984 by George Orwell (1949) - ISBN: 978-0-123 - Available"
 
-player2.addPoints(100);
-console.log(player2.getInfo()); // "Bob - Level 2 - Score: 150"
+book.checkOut();
+console.log(book.available); // false
 
-console.log(player1.compareWith(player2)); // "Both players have equal scores"
-
-player1.transferPoints(50, player2);
-console.log(player1.getInfo()); // "Alice - Level 1 - Score: 100"
-console.log(player2.getInfo()); // "Bob - Level 2 - Score: 200"
+// book.isbn = "999";        // ❌ Error - readonly property
+// book.title = "New Title"; // ❌ Error - readonly property
+book.available = true;       // ✅ OK - not readonly
 ```
 
-**Learning goals:** Understanding `this` in different contexts, passing objects to methods, `this` vs other objects
+**Learning goals:** Readonly modifier, immutable properties, when to use readonly
 
 ---
 
-## Exercise 4: The `this` Context Problem (Medium)
+## Exercise 3: Protected Access (Medium)
 
-**File:** `04-this-context-problem-medium.ts`
+**File:** `03-protected-access-medium.ts`
 
-Create a `Timer` class that demonstrates and solves the `this` context problem:
+Create a `Vehicle` base class and `Car` subclass demonstrating protected members:
 
 **Requirements:**
-- Property: `seconds` (number, starts at 0)
-- Property: `isRunning` (boolean, starts false)
-- Regular method `tick()`: increments seconds and logs current time
-- Arrow function method `tickArrow`: does the same as tick but preserves `this`
-- Method `start()`: sets isRunning to true
-- Method `stop()`: sets isRunning to false
-- Method `getTime()`: returns current seconds
-- Method `reset()`: resets seconds to 0 and stops timer
+
+**Vehicle class:**
+- Protected property: `engineStatus` (string: "off" or "on")
+- Public property: `brand` (string)
+- Public property: `model` (string)
+- Constructor accepts brand and model
+- Protected method `startEngine()`: sets engineStatus to "on"
+- Protected method `stopEngine()`: sets engineStatus to "off"
+- Public method `getEngineStatus()`: returns engineStatus
+
+**Car class (extends Vehicle):**
+- Private property: `fuelLevel` (number, 0-100)
+- Constructor accepts brand, model, and initial fuel level
+- Public method `drive()`: checks fuel and engine status, consumes fuel
+- Public method `refuel(amount: number)`: adds fuel (max 100)
+- Public method `start()`: starts engine if fuel > 0
+- Public method `stop()`: stops engine
 
 **Example usage:**
 ```typescript
-const timer = new Timer();
+const car = new Car("Toyota", "Camry", 50);
 
-// This works
-timer.tick();
-console.log(timer.getTime()); // 1
+console.log(car.getEngineStatus()); // "off"
 
-// Extracting method loses 'this' (demonstrates problem)
-const tickFn = timer.tick;
-// tickFn(); // Would cause error if called
+car.start();
+console.log(car.getEngineStatus()); // "on"
 
-// Arrow function preserves 'this' (solution)
-const tickArrowFn = timer.tickArrow;
-tickArrowFn();
-console.log(timer.getTime()); // 2
+car.drive();
+console.log(car.getEngineStatus()); // Still "on", fuel decreased
 
-// Using bind as another solution
-const boundTick = timer.tick.bind(timer);
-boundTick();
-console.log(timer.getTime()); // 3
+car.stop();
+console.log(car.getEngineStatus()); // "off"
+
+// car.engineStatus = "broken"; // ❌ Error - protected property
+// car.startEngine();            // ❌ Error - protected method
 ```
 
-**Learning goals:** The `this` context problem, arrow functions vs regular methods, `.bind()` method
+**Learning goals:** Protected modifier, inheritance with access control, protected vs private
 
 ---
 
-## Exercise 5: Method Chaining (Hard)
+## Exercise 4: Proper Encapsulation (Medium)
 
-**File:** `05-method-chaining-hard.ts`
+**File:** `04-proper-encapsulation-medium.ts`
 
-Create a `QueryBuilder` class that supports method chaining:
+Create a `ShoppingCart` class with proper encapsulation:
 
 **Requirements:**
-- Property: `query` (string, starts as empty)
-- Method `select(fields: string)`: adds SELECT clause, returns `this`
-- Method `from(table: string)`: adds FROM clause, returns `this`
-- Method `where(condition: string)`: adds WHERE clause, returns `this`
-- Method `orderBy(field: string, direction: "ASC" | "DESC")`: adds ORDER BY clause, returns `this`
-- Method `limit(count: number)`: adds LIMIT clause, returns `this`
-- Method `build()`: returns the final query string
-- Method `reset()`: clears query, returns `this`
+- Private property: `items` (array of {name: string, price: number, quantity: number})
+- Private property: `discountPercentage` (number, 0-100)
+- Public method `addItem(name: string, price: number, quantity: number)`: adds item with validation
+- Public method `removeItem(name: string)`: removes item by name
+- Public method `updateQuantity(name: string, newQuantity: number)`: updates item quantity
+- Public method `applyDiscount(percentage: number)`: sets discount (0-100)
+- Public method `getTotal()`: calculates total with discount applied
+- Public method `getItemCount()`: returns total number of items
+- Public method `getItems()`: returns copy of items array (not direct reference!)
+- Public method `clear()`: empties cart
 
 **Example usage:**
 ```typescript
-const qb = new QueryBuilder();
+const cart = new ShoppingCart();
 
-const query1 = qb
-  .select("id, name, email")
-  .from("users")
-  .where("age > 18")
-  .orderBy("name", "ASC")
-  .limit(10)
-  .build();
+cart.addItem("Laptop", 1000, 1);
+cart.addItem("Mouse", 25, 2);
 
-console.log(query1);
-// "SELECT id, name, email FROM users WHERE age > 18 ORDER BY name ASC LIMIT 10"
+console.log(cart.getTotal()); // 1050
+console.log(cart.getItemCount()); // 2
 
-// Can chain reset and build new query
-const query2 = qb
-  .reset()
-  .select("*")
-  .from("products")
-  .where("price < 100")
-  .build();
+cart.applyDiscount(10); // 10% off
+console.log(cart.getTotal()); // 945
 
-console.log(query2);
-// "SELECT * FROM products WHERE price < 100"
+cart.updateQuantity("Mouse", 1);
+console.log(cart.getTotal()); // 922.5
 
-// Methods can be called independently too
-const qb2 = new QueryBuilder();
-qb2.select("title, content");
-qb2.from("posts");
-qb2.where("published = true");
-console.log(qb2.build());
-// "SELECT title, content FROM posts WHERE published = true"
+// cart.items.push({...}); // ❌ Error - items is private
+const items = cart.getItems();
+items.push({name: "Hack", price: 0, quantity: 1}); // Modifying returned copy doesn't affect cart
+console.log(cart.getItemCount()); // Still 2
 ```
 
-**Bonus Challenge:**
-Add a `QueryBuilder` method `and(condition: string)` and `or(condition: string)` for complex WHERE clauses:
+**Learning goals:** Full encapsulation, data validation, protecting internal state, returning copies instead of references
 
+---
+
+## Exercise 5: Access Control in Practice (Hard)
+
+**File:** `05-access-control-practice-hard.ts`
+
+Create a `BankAccount` hierarchy with proper access control:
+
+**Requirements:**
+
+**BankAccount (base class):**
+- Private property: `accountNumber` (readonly string)
+- Protected property: `balance` (number)
+- Private property: `transactions` (array of {type: string, amount: number, date: Date})
+- Public readonly property: `accountType` (string)
+- Constructor accepts accountNumber and accountType
+- Protected method `recordTransaction(type: string, amount: number)`: adds to transactions
+- Public method `deposit(amount: number)`: adds to balance, records transaction
+- Public method `withdraw(amount: number)`: removes from balance with validation, records transaction
+- Public method `getBalance()`: returns balance
+- Public method `getTransactionHistory()`: returns copy of recent transactions (last 10)
+
+**SavingsAccount (extends BankAccount):**
+- Private property: `interestRate` (number, e.g., 0.02 for 2%)
+- Private property: `minimumBalance` (number, default 100)
+- Constructor accepts accountNumber and interestRate
+- Public method `applyInterest()`: adds interest to balance, records transaction
+- Override `withdraw()`: prevent withdrawal if balance would fall below minimum
+
+**CheckingAccount (extends BankAccount):**
+- Private property: `overdraftLimit` (number)
+- Private property: `monthlyFee` (number)
+- Constructor accepts accountNumber and overdraftLimit
+- Override `withdraw()`: allow overdraft up to limit
+- Public method `applyMonthlyFee()`: deducts fee from balance
+
+**Example usage:**
 ```typescript
-const query3 = new QueryBuilder()
-  .select("*")
-  .from("orders")
-  .where("status = 'pending'")
-  .and("total > 100")
-  .or("priority = 'high'")
-  .build();
+const savings = new SavingsAccount("SAV-001", 0.02);
+savings.deposit(1000);
+savings.applyInterest();
+console.log(savings.getBalance()); // 1020
+
+// savings.withdraw(950); // ❌ Error - would go below minimum balance
+
+const checking = new CheckingAccount("CHK-001", 500);
+checking.deposit(300);
+checking.withdraw(600); // ✅ OK - overdraft allowed
+console.log(checking.getBalance()); // -300 (overdraft)
+
+checking.applyMonthlyFee();
+console.log(checking.getBalance()); // -310 (if fee is 10)
+
+console.log(checking.getTransactionHistory());
+// Returns last 10 transactions
 ```
 
-**Learning goals:** Method chaining, returning `this`, fluent interfaces, building complex objects
+**Learning goals:** Complex access control, inheritance with protected members, method overriding, real-world encapsulation patterns
 
 ---
 
 ## How to Complete
 
 1. Work through exercises in order (they build in difficulty)
-2. Run each exercise with: `npx ts-node exercises/lesson-03/01-basic-methods-easy.ts`
-3. For exercise 4, experiment with extracting methods and seeing what breaks
-4. For exercise 5, make sure each method returns `this` for chaining
-5. Test both chained and non-chained method calls
+2. Run each exercise with: `npx ts-node exercises/lesson-03/01-public-vs-private-easy.ts`
+3. Pay attention to when each access modifier is appropriate
+4. Remember: private for implementation details, protected for subclass access, public for external interface
+5. Always validate data in public methods
 
 ## Tips
 
-- Read the lesson content in `docs/03-methods-and-this.md` if you get stuck
-- `this` always refers to the object instance that called the method
-- Arrow functions preserve `this` from where they're defined
-- Method chaining requires returning `this` from each method
-- Use `.bind()` when you need to preserve `this` in callbacks
+- Read the lesson content in `docs/03-access-modifiers-encapsulation.md` if you get stuck
+- Private = only this class, Protected = this class + subclasses, Public = everywhere
+- Use readonly for properties that shouldn't change after initialization
+- When returning arrays/objects from getters, return copies to prevent external modification
+- Encapsulation isn't just about hiding - it's about controlling HOW data is accessed and modified
