@@ -17,21 +17,25 @@ Thanks for your interest in contributing! This guide is meant to help developers
    git remote add upstream https://github.com/ORIGINAL-OWNER/typescript-oop-guide.git
    git remote -v  # Verify the remotes are set up correctly
    ```
-4. **Create a branch** for your changes:
+4. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+5. **Create a branch** for your changes:
    ```bash
    git checkout -b your-name/feature-description
    ```
-5. **Make your changes** (see guidelines below)
-6. **Test** your changes thoroughly
-7. **Commit** with a clear message:
+6. **Make your changes** (see guidelines below)
+7. **Test** your changes thoroughly
+8. **Commit** with a clear message:
    ```bash
    git commit -m "Add: brief description of changes"
    ```
-8. **Push** to your fork:
+9. **Push** to your fork:
    ```bash
    git push origin your-name/feature-description
    ```
-9. **Open a Pull Request** with a description of your changes
+10. **Open a Pull Request** with a description of your changes
 
 ## What We're Looking For
 
