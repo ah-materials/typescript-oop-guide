@@ -1319,6 +1319,6 @@ class TodoList {
 ## What's Next?
 
 Now that you have a comprehensive understanding of classes, objects, properties, constructors, methods, and `this`, you'll learn:
-- Static members that belong to the class itself (File 04)
-- Access modifiers to control visibility (File 05)
-- Getters and setters for controlled property access (File 06)
+- Static members that belong to the class itself (File 02)
+- Access modifiers to control visibility (File 03)
+- Getters and setters for controlled property access (File 04)

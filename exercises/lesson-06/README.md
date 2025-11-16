@@ -296,14 +296,14 @@ console.log(Payment.getTransactionCount()); // 3
 ## How to Complete
 
 1. Work through exercises in order (they build in difficulty)
-2. Run each exercise with: `npx ts-node exercises/lesson-08/01-basic-abstract-class-easy.ts`
+2. Run each exercise with: `npx ts-node exercises/lesson-06/01-basic-abstract-class-easy.ts`
 3. Remember: you cannot instantiate abstract classes directly
 4. All abstract methods MUST be implemented in concrete subclasses
 5. Abstract classes can have concrete methods that all subclasses inherit
 
 ## Tips
 
-- Read the lesson content in `docs/08-abstract-classes.md` if you get stuck
+- Read the lesson content in `docs/06-abstract-classes.md` if you get stuck
 - Use `abstract class` keyword to define abstract classes
 - Use `abstract` keyword before method signature (no implementation)
 - Abstract classes are great for defining templates and enforcing structure

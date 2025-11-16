@@ -297,14 +297,14 @@ manager.tasks.forEach(task => {
 ## How to Complete
 
 1. Work through exercises in order (they build in difficulty)
-2. Run each exercise with: `npx ts-node exercises/lesson-09/01-basic-interface-easy.ts`
+2. Run each exercise with: `npx ts-node exercises/lesson-07/01-basic-interface-easy.ts`
 3. Remember: interfaces define contracts, classes implement them
 4. Use `implements` keyword to implement interfaces
 5. Classes can implement multiple interfaces separated by commas
 
 ## Tips
 
-- Read the lesson content in `docs/09-interfaces-polymorphism.md` if you get stuck
+- Read the lesson content in `docs/07-interfaces-polymorphism.md` if you get stuck
 - Interfaces only define structure, no implementation
 - Use interfaces for: contracts, polymorphism, flexible design
 - Multiple interfaces allow mixing different capabilities

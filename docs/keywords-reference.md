@@ -35,7 +35,7 @@ const person = new Person("Alice", 30);
 **Purpose:** Special method that initializes new objects
 **Syntax:** `constructor(parameters) { }`
 **Used in:** Inside class body
-**Learn more:** [02-properties-and-constructors.md](02-properties-and-constructors.md#the-constructor-initializing-objects)
+**Learn more:** [01-classes-and-objects.md](01-classes-and-objects.md#the-constructor-initializing-objects)
 
 ```typescript
 class User {
@@ -51,7 +51,7 @@ class User {
 **Purpose:** Refers to the current instance of the class
 **Syntax:** `this.propertyName` or `this.methodName()`
 **Used in:** Inside class methods and constructor
-**Learn more:** [02-properties-and-constructors.md](02-properties-and-constructors.md#the-this-keyword-basics), [03-methods-and-this.md](03-methods-and-this.md)
+**Learn more:** [01-classes-and-objects.md](01-classes-and-objects.md#the-this-keyword-basics)
 
 ```typescript
 class Counter {
@@ -69,7 +69,7 @@ class Counter {
 **Purpose:** Makes members belong to the class itself, not instances
 **Syntax:** `static propertyName: type` or `static methodName() { }`
 **Used in:** Before properties or methods
-**Learn more:** [04-static-members.md](04-static-members.md)
+**Learn more:** [02-static-members.md](02-static-members.md)
 
 ```typescript
 class MathUtils {
@@ -93,7 +93,7 @@ console.log(MathUtils.add(2, 3));
 **Purpose:** Makes members accessible everywhere (default)
 **Syntax:** `public propertyName: type`
 **Used in:** Before properties, methods, or constructor parameters
-**Learn more:** [05-access-modifiers-encapsulation.md](05-access-modifiers-encapsulation.md#the-public-modifier)
+**Learn more:** [03-access-modifiers-encapsulation.md](03-access-modifiers-encapsulation.md#the-public-modifier)
 
 ```typescript
 class Car {
@@ -114,7 +114,7 @@ console.log(car.brand); // ✅ OK
 **Purpose:** Makes members accessible only within the class
 **Syntax:** `private propertyName: type`
 **Used in:** Before properties, methods, or constructor parameters
-**Learn more:** [05-access-modifiers-encapsulation.md](05-access-modifiers-encapsulation.md#the-private-modifier)
+**Learn more:** [03-access-modifiers-encapsulation.md](03-access-modifiers-encapsulation.md#the-private-modifier)
 
 ```typescript
 class BankAccount {
@@ -135,7 +135,7 @@ const account = new BankAccount();
 **Purpose:** Makes members accessible within class and subclasses
 **Syntax:** `protected propertyName: type`
 **Used in:** Before properties, methods, or constructor parameters
-**Learn more:** [05-access-modifiers-encapsulation.md](05-access-modifiers-encapsulation.md#the-protected-modifier)
+**Learn more:** [03-access-modifiers-encapsulation.md](03-access-modifiers-encapsulation.md#the-protected-modifier)
 
 ```typescript
 class Animal {
@@ -162,7 +162,7 @@ const dog = new Dog("Canis familiaris");
 **Purpose:** Makes properties immutable after initialization
 **Syntax:** `readonly propertyName: type`
 **Used in:** Before properties or constructor parameters
-**Learn more:** [05-access-modifiers-encapsulation.md](05-access-modifiers-encapsulation.md#the-readonly-modifier)
+**Learn more:** [03-access-modifiers-encapsulation.md](03-access-modifiers-encapsulation.md#the-readonly-modifier)
 
 ```typescript
 class User {
@@ -187,7 +187,7 @@ const user = new User("user-123");
 **Purpose:** Defines a getter for computed or controlled property access
 **Syntax:** `get propertyName(): type { return value; }`
 **Used in:** Inside class body
-**Learn more:** [06-getters-setters.md](06-getters-setters.md)
+**Learn more:** [04-getters-setters.md](04-getters-setters.md)
 
 ```typescript
 class Circle {
@@ -208,7 +208,7 @@ console.log(circle.area); // Accessed like a property
 **Purpose:** Defines a setter for controlled property modification
 **Syntax:** `set propertyName(value: type) { }`
 **Used in:** Inside class body
-**Learn more:** [06-getters-setters.md](06-getters-setters.md)
+**Learn more:** [04-getters-setters.md](04-getters-setters.md)
 
 ```typescript
 class User {
@@ -240,7 +240,7 @@ console.log(user.age); // Calls the getter
 **Purpose:** Creates inheritance relationship between classes
 **Syntax:** `class Child extends Parent { }`
 **Used in:** Class declaration
-**Learn more:** [07-inheritance.md](07-inheritance.md)
+**Learn more:** [05-inheritance.md](05-inheritance.md)
 
 ```typescript
 class Animal {
@@ -264,7 +264,7 @@ dog.bark();            // Defined in Dog
 **Purpose:** Refers to parent class (for constructors and methods)
 **Syntax:** `super(arguments)` or `super.methodName()`
 **Used in:** Inside child class constructor or methods
-**Learn more:** [07-inheritance.md](07-inheritance.md#deep-dive-the-super-keyword)
+**Learn more:** [05-inheritance.md](05-inheritance.md#deep-dive-the-super-keyword)
 
 ```typescript
 class Vehicle {
@@ -295,7 +295,7 @@ class Car extends Vehicle {
 **Purpose:** Defines abstract classes or methods that must be implemented by subclasses
 **Syntax:** `abstract class ClassName { }` or `abstract methodName(): type;`
 **Used in:** Class declaration or method declaration
-**Learn more:** [08-abstract-classes.md](08-abstract-classes.md)
+**Learn more:** [06-abstract-classes.md](06-abstract-classes.md)
 
 ```typescript
 abstract class Shape {
@@ -326,7 +326,7 @@ const circle = new Circle(5); // ✅ OK
 **Purpose:** Defines a contract that classes must follow
 **Syntax:** `interface InterfaceName { }`
 **Used in:** Top-level declaration
-**Learn more:** [09-interfaces-polymorphism.md](09-interfaces-polymorphism.md)
+**Learn more:** [07-interfaces-polymorphism.md](07-interfaces-polymorphism.md)
 
 ```typescript
 interface Printable {
@@ -354,7 +354,7 @@ class Document implements Printable, Saveable {
 **Purpose:** Makes a class implement an interface
 **Syntax:** `class ClassName implements InterfaceName { }`
 **Used in:** Class declaration
-**Learn more:** [09-interfaces-polymorphism.md](09-interfaces-polymorphism.md)
+**Learn more:** [07-interfaces-polymorphism.md](07-interfaces-polymorphism.md)
 
 ```typescript
 interface Vehicle {
@@ -486,11 +486,9 @@ class Example {
 
 - [00 - Real-World Use Cases](00-real-world-use-cases.md)
 - [01 - Classes and Objects](01-classes-and-objects.md)
-- [02 - Properties and Constructors](02-properties-and-constructors.md)
-- [03 - Methods and this](03-methods-and-this.md)
-- [04 - Static Members](04-static-members.md)
-- [05 - Access Modifiers and Encapsulation](05-access-modifiers-encapsulation.md)
-- [06 - Getters and Setters](06-getters-setters.md)
-- [07 - Inheritance](07-inheritance.md)
-- [08 - Abstract Classes](08-abstract-classes.md)
-- [09 - Interfaces and Polymorphism](09-interfaces-polymorphism.md)
+- [02 - Static Members](02-static-members.md)
+- [03 - Access Modifiers and Encapsulation](03-access-modifiers-encapsulation.md)
+- [04 - Getters and Setters](04-getters-setters.md)
+- [05 - Inheritance](05-inheritance.md)
+- [06 - Abstract Classes](06-abstract-classes.md)
+- [07 - Interfaces and Polymorphism](07-interfaces-polymorphism.md)

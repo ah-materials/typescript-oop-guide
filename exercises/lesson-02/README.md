@@ -238,14 +238,14 @@ console.log(UserFactory.getTotalUsers()); // 8 (admin + mod + user + apiUser + 5
 ## How to Complete
 
 1. Work through exercises in order (they build in difficulty)
-2. Run each exercise with: `npx ts-node exercises/lesson-04/01-static-properties-easy.ts`
+2. Run each exercise with: `npx ts-node exercises/lesson-02/01-static-properties-easy.ts`
 3. Pay attention to when to use static vs instance members
 4. Remember: static members are accessed via the class name, instance members via objects
 5. For utility classes (Exercise 4), no instances should be created
 
 ## Tips
 
-- Read the lesson content in `docs/04-static-members.md` if you get stuck
+- Read the lesson content in `docs/02-static-members.md` if you get stuck
 - Static members belong to the class, not instances
 - Use static for: shared state, constants, utility functions, factory methods
 - Use instance members for: data unique to each object

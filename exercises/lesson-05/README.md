@@ -251,14 +251,14 @@ console.log(MediaItem.getTotalItems()); // 3
 ## How to Complete
 
 1. Work through exercises in order (they build in difficulty)
-2. Run each exercise with: `npx ts-node exercises/lesson-07/01-basic-inheritance-easy.ts`
+2. Run each exercise with: `npx ts-node exercises/lesson-05/01-basic-inheritance-easy.ts`
 3. Always call `super()` in child class constructors before accessing `this`
 4. Use `super.method()` to call parent class methods
 5. Practice overriding methods while extending their functionality
 
 ## Tips
 
-- Read the lesson content in `docs/07-inheritance.md` if you get stuck
+- Read the lesson content in `docs/05-inheritance.md` if you get stuck
 - `extends` creates a parent-child relationship
 - `super()` must be called first in child constructors
 - Use `super.method()` to call parent methods from child methods

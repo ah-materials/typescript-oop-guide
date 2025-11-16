@@ -222,14 +222,14 @@ console.log(checking.getTransactionHistory());
 ## How to Complete
 
 1. Work through exercises in order (they build in difficulty)
-2. Run each exercise with: `npx ts-node exercises/lesson-05/01-public-vs-private-easy.ts`
+2. Run each exercise with: `npx ts-node exercises/lesson-03/01-public-vs-private-easy.ts`
 3. Pay attention to when each access modifier is appropriate
 4. Remember: private for implementation details, protected for subclass access, public for external interface
 5. Always validate data in public methods
 
 ## Tips
 
-- Read the lesson content in `docs/05-access-modifiers-encapsulation.md` if you get stuck
+- Read the lesson content in `docs/03-access-modifiers-encapsulation.md` if you get stuck
 - Private = only this class, Protected = this class + subclasses, Public = everywhere
 - Use readonly for properties that shouldn't change after initialization
 - When returning arrays/objects from getters, return copies to prevent external modification

@@ -214,14 +214,14 @@ console.log(cart.isEmpty);      // true
 ## How to Complete
 
 1. Work through exercises in order (they build in difficulty)
-2. Run each exercise with: `npx ts-node exercises/lesson-06/01-basic-getters-setters-easy.ts`
+2. Run each exercise with: `npx ts-node exercises/lesson-04/01-basic-getters-setters-easy.ts`
 3. Remember: getters have no parameters, setters have exactly one parameter
 4. Always validate in setters before modifying internal state
 5. Use getters for computed properties that don't need to be stored
 
 ## Tips
 
-- Read the lesson content in `docs/06-getters-setters.md` if you get stuck
+- Read the lesson content in `docs/04-getters-setters.md` if you get stuck
 - Getters are called without parentheses: `obj.property` not `obj.property()`
 - Setters are assigned to like regular properties: `obj.property = value`
 - Use private `_property` and public `property` getter/setter pattern
