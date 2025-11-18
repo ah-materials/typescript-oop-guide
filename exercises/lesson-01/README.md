@@ -220,7 +220,6 @@ Create a `Student` class and a `Course` class that interact with each other:
 - Properties: `name` (string), `studentId` (string), `enrolledCourses` (array of course names)
 - Constructor accepts name and studentId
 - Method `enroll(courseName: string)`: adds course to enrolledCourses
-- Method `drop(courseName: string)`: removes course from enrolledCourses
 - Method `listCourses()`: returns array of enrolled course names
 - Method `isEnrolledIn(courseName: string)`: returns boolean
 
@@ -228,7 +227,7 @@ Create a `Student` class and a `Course` class that interact with each other:
 - Properties: `courseName` (string), `instructor` (string), `students` (array of Student objects), `maxCapacity` (number)
 - Constructor accepts courseName, instructor, and maxCapacity
 - Method `addStudent(student: Student)`: adds student if capacity allows, also enrolls student in this course
-- Method `removeStudent(student: Student)`: removes student from course
+- Method `removeStudent(student: Student)`: removes student from course AND removes course from student's enrolledCourses
 - Method `getEnrollmentCount()`: returns number of enrolled students
 - Method `isFull()`: returns boolean
 
@@ -269,14 +268,10 @@ console.log(course1.getEnrollmentCount()); // 1
 console.log(course1.isFull()); // false
 console.log(student1.listCourses()); // ["JavaScript Basics"]
 
-// Test Student drop method
-student2.drop("JavaScript Basics");
+// Test removing student updates both course and student
+course2.removeStudent(student2);
 console.log(student2.listCourses()); // ["TypeScript 101"]
 console.log(course2.getEnrollmentCount()); // 1 (only student1 now)
-
-// Test edge case: dropping a course not enrolled in
-student3.drop("TypeScript 101");
-console.log(student3.listCourses()); // [] (unchanged, wasn't enrolled)
 ```
 
 **Learning goals:** Object relationships, bidirectional interactions, managing collections of objects
