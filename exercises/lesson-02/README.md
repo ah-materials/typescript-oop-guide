@@ -11,6 +11,7 @@ Complete these exercises to practice using static properties and methods, unders
 Create a `Car` class that tracks total cars created:
 
 **Requirements:**
+
 - Static property: `totalCars` (number, starts at 0)
 - Instance properties: `brand` (string), `model` (string), `carId` (number)
 - Constructor increments `totalCars` and assigns unique `carId` based on `totalCars`
@@ -18,6 +19,7 @@ Create a `Car` class that tracks total cars created:
 - Instance method `getInfo()`: returns formatted car information
 
 **Validation Requirements:**
+
 - Constructor:
   - Must increment `totalCars` by exactly 1 for each new car created
   - Must assign `carId` based on the incremented `totalCars` value
@@ -27,6 +29,7 @@ Create a `Car` class that tracks total cars created:
   - Should accurately reflect all cars created across all instances
 
 **Example usage:**
+
 ```typescript
 // Test initial state
 console.log(Car.getTotalCars()); // 0
@@ -73,6 +76,7 @@ console.log(car4.carId); // 4
 Create a `Temperature` class with static conversion methods and constants:
 
 **Requirements:**
+
 - Static readonly constants:
   - `FREEZING_POINT_C = 0`
   - `BOILING_POINT_C = 100`
@@ -88,6 +92,7 @@ Create a `Temperature` class with static conversion methods and constants:
   - `toKelvin()`: converts this instance's temperature to K
 
 **Validation Requirements:**
+
 - Static conversion methods:
   - `celsiusToFahrenheit()`: Use formula (C × 9/5) + 32
   - `fahrenheitToCelsius()`: Use formula (F - 32) × 5/9
@@ -100,46 +105,47 @@ Create a `Temperature` class with static conversion methods and constants:
   - Must accept and store a valid Celsius temperature value
 
 **Example usage:**
+
 ```typescript
 // Test static constants
 console.log(Temperature.FREEZING_POINT_C); // 0
-console.log(Temperature.BOILING_POINT_C);  // 100
-console.log(Temperature.ABSOLUTE_ZERO_C);  // -273.15
+console.log(Temperature.BOILING_POINT_C); // 100
+console.log(Temperature.ABSOLUTE_ZERO_C); // -273.15
 
 // Test static Celsius to Fahrenheit conversion
-console.log(Temperature.celsiusToFahrenheit(0));   // 32
+console.log(Temperature.celsiusToFahrenheit(0)); // 32
 console.log(Temperature.celsiusToFahrenheit(100)); // 212
-console.log(Temperature.celsiusToFahrenheit(25));  // 77
+console.log(Temperature.celsiusToFahrenheit(25)); // 77
 console.log(Temperature.celsiusToFahrenheit(-40)); // -40
 
 // Test static Fahrenheit to Celsius conversion
-console.log(Temperature.fahrenheitToCelsius(32));  // 0
+console.log(Temperature.fahrenheitToCelsius(32)); // 0
 console.log(Temperature.fahrenheitToCelsius(212)); // 100
-console.log(Temperature.fahrenheitToCelsius(77));  // 25
+console.log(Temperature.fahrenheitToCelsius(77)); // 25
 
 // Test static Celsius to Kelvin conversion
-console.log(Temperature.celsiusToKelvin(0));     // 273.15
-console.log(Temperature.celsiusToKelvin(100));   // 373.15
+console.log(Temperature.celsiusToKelvin(0)); // 273.15
+console.log(Temperature.celsiusToKelvin(100)); // 373.15
 console.log(Temperature.celsiusToKelvin(-273.15)); // 0 (absolute zero)
 
 // Test static Kelvin to Celsius conversion
 console.log(Temperature.kelvinToCelsius(273.15)); // 0
 console.log(Temperature.kelvinToCelsius(373.15)); // 100
-console.log(Temperature.kelvinToCelsius(0));      // -273.15
+console.log(Temperature.kelvinToCelsius(0)); // -273.15
 
 // Test instance methods
 const temp1 = new Temperature(25);
-console.log(temp1.celsius);       // 25
+console.log(temp1.celsius); // 25
 console.log(temp1.toFahrenheit()); // 77
-console.log(temp1.toKelvin());     // 298.15
+console.log(temp1.toKelvin()); // 298.15
 
 const temp2 = new Temperature(0);
 console.log(temp2.toFahrenheit()); // 32
-console.log(temp2.toKelvin());     // 273.15
+console.log(temp2.toKelvin()); // 273.15
 
 const temp3 = new Temperature(100);
 console.log(temp3.toFahrenheit()); // 212
-console.log(temp3.toKelvin());     // 373.15
+console.log(temp3.toKelvin()); // 373.15
 ```
 
 **Learning goals:** Static constants, static utility methods, mixing static and instance members
@@ -153,6 +159,7 @@ console.log(temp3.toKelvin());     // 373.15
 Create a `DatabaseConnection` class that limits total active connections:
 
 **Requirements:**
+
 - Static properties:
   - `maxConnections` (number, set to 5)
   - `activeConnections` (number, starts at 0)
@@ -175,6 +182,7 @@ Create a `DatabaseConnection` class that limits total active connections:
   - `getHistory()`: returns connection history
 
 **Validation Requirements:**
+
 - Constructor:
   - Must throw an error if `activeConnections >= maxConnections`
   - Must increment `activeConnections` by exactly 1
@@ -194,6 +202,7 @@ Create a `DatabaseConnection` class that limits total active connections:
   - Must return `true` only if `activeConnections < maxConnections`
 
 **Example usage:**
+
 ```typescript
 // Test initial state
 console.log(DatabaseConnection.canConnect()); // true
@@ -249,7 +258,7 @@ console.log(DatabaseConnection.getStatus()); // "5/5 connections active"
 
 // Test connection history tracks all connections created
 const history = DatabaseConnection.getHistory();
-console.log(history.length); // 7
+console.log(history.length); // 6
 console.log(history); // ["conn-1", "conn-2", "conn-3", "conn-4", "conn-5", "conn-7"]
 ```
 
@@ -264,6 +273,7 @@ console.log(history); // ["conn-1", "conn-2", "conn-3", "conn-4", "conn-5", "con
 Create a `MathUtils` class with only static methods (no instances needed):
 
 **Requirements:**
+
 - All methods should be static (this is a utility class, no instances created)
 - Static methods:
   - `max(...numbers: number[])`: returns largest number
@@ -276,6 +286,7 @@ Create a `MathUtils` class with only static methods (no instances needed):
   - `randomInt(min: number, max: number)`: returns random integer in range
 
 **Validation Requirements:**
+
 - `max()` and `min()`:
   - Must handle at least one number in the arguments
   - Must correctly identify the largest/smallest value
@@ -302,6 +313,7 @@ Create a `MathUtils` class with only static methods (no instances needed):
   - `min` must be <= `max`
 
 **Example usage:**
+
 ```typescript
 // Test max method
 console.log(MathUtils.max(1, 5, 3, 9, 2)); // 9
@@ -366,12 +378,14 @@ Create a `User` class and `UserFactory` with advanced factory patterns:
 **Requirements:**
 
 **User class:**
+
 - Properties: `id` (string), `username` (string), `email` (string), `role` (string), `createdAt` (Date), `permissions` (string[])
 - Constructor accepts all properties
 - Method `hasPermission(permission: string)`: checks if user has permission
 - Method `getInfo()`: returns formatted user info
 
 **UserFactory class (static methods only):**
+
 - Static property: `userCount` (tracks total users created)
 - Static method `createAdmin(username: string, email: string)`: creates admin user with all permissions
 - Static method `createModerator(username: string, email: string)`: creates moderator with limited permissions
@@ -382,6 +396,7 @@ Create a `User` class and `UserFactory` with advanced factory patterns:
 - Static method `getTotalUsers()`: returns total users created
 
 **Validation Requirements:**
+
 - **User class:**
   - Constructor:
     - All string properties must be non-empty
@@ -420,6 +435,7 @@ Create a `User` class and `UserFactory` with advanced factory patterns:
     - Must set `createdAt` to current date/time
 
 **Example usage:**
+
 ```typescript
 // Test initial state
 console.log(UserFactory.getTotalUsers()); // 0
@@ -457,7 +473,7 @@ const customUser = UserFactory.createCustomUser(
   "custom1",
   "custom@example.com",
   "contributor",
-  ["read", "create_posts", "edit_own_posts"]
+  ["read", "create_posts", "edit_own_posts"],
 );
 console.log(customUser.role); // "contributor"
 console.log(customUser.hasPermission("edit_own_posts")); // true
@@ -469,7 +485,7 @@ const apiData = {
   username: "jane",
   email: "jane@example.com",
   role: "user",
-  permissions: ["read", "comment"]
+  permissions: ["read", "comment"],
 };
 const apiUser = UserFactory.createFromAPIData(apiData);
 console.log(apiUser.username); // "jane"
