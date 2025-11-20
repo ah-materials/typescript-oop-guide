@@ -2,7 +2,28 @@
 
 Thanks for your interest in contributing! This guide is meant to help developers learn TypeScript OOP concepts.
 
-> **Note:** This guide is for contributing improvements to the learning materials (new exercises, documentation updates, bug fixes, etc.). If you're a learner completing exercises, simply commit your solutions to your fork - **no PR needed**! Your exercise solutions are personal learning progress. See the README.md for learner instructions.
+## ⚠️ Are You a Learner or a Contributor?
+
+### 👨‍🎓 If You're Just Learning (Completing Exercises)
+
+**DO NOT create Pull Requests!** Your exercise solutions are for your own learning.
+
+**What you should do:**
+1. Fork this repository
+2. Clone your fork and set up the upstream remote (see README.md)
+3. Complete exercises and commit to your fork
+4. **Regularly check for updates** using `git fetch upstream` and `git merge upstream/main`
+5. Keep learning at your own pace!
+
+**Why no PRs?** Pull Requests are only for contributing improvements to the learning materials themselves (new exercises, documentation fixes, etc.), NOT for submitting your personal exercise solutions.
+
+See the [Keeping Your Fork Updated](README.md#-keeping-your-fork-updated) section in README.md for detailed instructions on how to stay up-to-date.
+
+---
+
+### 🛠️ If You're Contributing Improvements
+
+This section is for you! Continue reading below for how to contribute new exercises, documentation improvements, bug fixes, and other enhancements to the learning materials.
 
 ## How to Contribute
 
