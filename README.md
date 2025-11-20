@@ -45,18 +45,33 @@ Progressive exercises organized by lesson:
 
 ### Installation
 
-1. Clone this repository:
+#### For Learners (Tracking Your Own Progress)
+
+1. **Fork this repository** on GitHub (click the "Fork" button at the top right)
+
+2. **Clone YOUR fork** to your local machine:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/YOUR-USERNAME/typescript-oop-guide.git
 cd typescript-oop-guide
 ```
 
-2. Install dependencies:
+3. **Set up the upstream remote** (this is how you'll get updates):
+
+```bash
+git remote add upstream https://github.com/ah-materials/typescript-oop-guide.git
+git remote -v  # Verify it's set up correctly
+```
+
+4. **Install dependencies**:
 
 ```bash
 npm install
 ```
+
+#### For Contributors (Adding New Content/Fixes)
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions.
 
 ## 📖 How to Use This Guide
 
@@ -128,6 +143,73 @@ npx ts-node exercises/lesson-09/05-complete-application-hard.ts
 - Your solutions are personal - don't create PRs to submit exercise solutions
 - Focus on learning at your own pace!
 
+### 🔄 Keeping Your Fork Updated
+
+**IMPORTANT:** This repository is regularly updated with new exercises, bug fixes, and improvements. Check for updates weekly!
+
+**⚠️ DO NOT create Pull Requests from your fork back to this repository** if you're just completing exercises. That's not how you get updates - follow the steps below instead.
+
+#### How to Get New Updates
+
+Every week (or before starting a new lesson), run these commands to pull the latest changes:
+
+```bash
+# 1. Check what's new in the original repository
+git fetch upstream
+
+# 2. Make sure you're on your main branch
+git checkout main
+
+# 3. Merge the updates from the original repo into your fork
+git merge upstream/main
+
+# 4. Push the updates to your fork on GitHub
+git push origin main
+```
+
+**What this does:**
+
+- `git fetch upstream` - Downloads the latest changes from the original repository
+- `git merge upstream/main` - Combines those changes with your work (your exercise solutions stay intact!)
+- `git push origin main` - Updates your fork on GitHub
+
+**Tip:** If you've been working on exercises in your main branch, commit them first before running these commands!
+
+#### Best Practice Workflow
+
+To avoid conflicts when updating:
+
+1. **Work on a separate branch** for your exercises:
+
+   ```bash
+   git checkout -b my-progress
+   ```
+
+2. **Commit your work regularly**:
+
+   ```bash
+   git add .
+   git commit -m "Complete lesson 3 exercises"
+   git push origin my-progress
+   ```
+
+3. **When updates are available**, switch to main and update:
+
+   ```bash
+   git checkout main
+   git fetch upstream
+   git merge upstream/main
+   git push origin main
+   ```
+
+4. **Merge updates into your progress branch**:
+   ```bash
+   git checkout my-progress
+   git merge main
+   ```
+
+This keeps your exercise solutions separate and makes updating much easier!
+
 ## 📋 Learning Path
 
 The documentation is structured to build progressively:
@@ -152,7 +234,17 @@ Advanced Concepts (Code Reuse and Abstraction)
 
 ## 🤝 Contributing
 
-Contributions are welcome! We're looking for:
+### Are You a Learner or Contributor?
+
+**👨‍🎓 If you're just completing exercises:** DO NOT create Pull Requests! Just commit your solutions to your fork and use `git fetch upstream` + `git merge upstream/main` to get updates. See the [Keeping Your Fork Updated](#-keeping-your-fork-updated) section above.
+
+**🛠️ If you want to contribute improvements to the learning materials:** We welcome contributions! See below.
+
+---
+
+### What We're Looking For
+
+Contributions to improve the learning materials are welcome:
 
 - Additional exercises with clear requirements and examples
 - Improvements to existing notes (clarity, examples, corrections)
@@ -165,16 +257,12 @@ Contributions are welcome! We're looking for:
 1. Fork this repository
 2. Clone your fork and set up the upstream remote
 3. Create a new branch (`git checkout -b your-name/feature-description`)
-4. Make your changes
+4. Make your changes to the learning materials
 5. Test thoroughly
 6. Commit and push to your fork
-7. Open a Pull Request
+7. Open a Pull Request describing your improvements
 
 **For detailed contribution instructions**, including how to set up your development environment and guidelines for different types of contributions, see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-### Important Note for Learners
-
-If you're completing exercises, just commit your solutions to your fork - **no PR needed**! Your exercise solutions are personal learning progress.
 
 ## 📝 Exercise Solutions
 
