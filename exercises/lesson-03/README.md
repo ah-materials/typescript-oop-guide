@@ -246,19 +246,19 @@ Create an employee hierarchy demonstrating method overriding:
 **Manager class (extends Employee):**
 - Additional property: `teamSize` (number)
 - Constructor accepts name, id, baseSalary, teamSize
-- Override `calculatePay()`: calls super, adds team bonus (teamSize * 100)
+- Override `calculatePay()`: calls super, adds an additional team bonus (teamSize \* 100)
 - Method `getTeamSize()`: returns teamSize
 
 **Developer class (extends Employee):**
 - Additional property: `programmingLanguages` (string[])
-- Constructor accepts name, id, baseSalary, languages
-- Override `calculatePay()`: calls super, adds language bonus (languages.length * 500)
-- Method `addLanguage(language: string)`: adds language to array
+- Constructor accepts name, id, baseSalary, programmingLanguages
+- Override `calculatePay()`: calls super, adds an additional programmingLanguages bonus (programmingLanguages.length \* 500)
+- Method `addProgrammingLanguage(programmingLanguage: string)`: adds programmingLanguage to array
 
 **Validation Requirements:**
 - Employee: name non-empty, id positive, baseSalary >= 0, bonus defaults to 0
 - Manager: teamSize must be >= 0
-- Developer: languages must be array, addLanguage validates non-empty
+- Developer: programmingLanguages must be an array, addProgrammingLanguage() requires a non-empty string
 - All calculatePay() overrides must call super.calculatePay()
 
 **Example usage:**
@@ -295,12 +295,12 @@ dev.setBonus(3000);
 console.log(dev.calculatePay());
 // 94000 (90000 + 3000 + 1000)
 
-// Test addLanguage
-dev.addLanguage("Rust");
+// Test addProgrammingLanguage
+dev.addProgrammingLanguage("Rust");
 console.log(dev.calculatePay());
 // 94500 (90000 + 3000 + 1500 for 3 languages)
 
-dev.addLanguage("Go");
+dev.addProgrammingLanguage("Go");
 console.log(dev.calculatePay());
 // 95000 (90000 + 3000 + 2000 for 4 languages)
 
@@ -380,7 +380,14 @@ Create a comprehensive media library system:
 const library = new Library();
 
 // Create media items
-const book = new Book("1984", "George Orwell", 1949, "978-0-452-28423-4", 328, "Dystopian");
+const book = new Book(
+  "1984",
+  "George Orwell",
+  1949,
+  "978-0-452-28423-4",
+  328,
+  "Dystopian",
+);
 const movie = new Movie("Inception", "Christopher Nolan", 2010, 148, "Sci-Fi");
 const album = new Album("Abbey Road", "The Beatles", 1969, 17, "Rock");
 
@@ -442,7 +449,14 @@ library.removeItem("Inception");
 console.log(library.getMovies().length); // 0
 
 // Test multiple media items
-const book2 = new Book("The Hobbit", "J.R.R. Tolkien", 1937, "978-0-547-92822-7", 310, "Fantasy");
+const book2 = new Book(
+  "The Hobbit",
+  "J.R.R. Tolkien",
+  1937,
+  "978-0-547-92822-7",
+  310,
+  "Fantasy",
+);
 library.addItem(book2);
 book2.rate(8);
 
